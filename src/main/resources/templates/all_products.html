@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All Products</title>
+</head>
+<body>
+<style type="text/css">
+    header{
+        height: 25%;
+        background: blue;
+    }
+    header li{
+        display:inline-block;
+        padding:2%;
+    }
+    a{
+        text-decoration:none;
+    }
+    #left{
+        width:25%;
+        text-align: center;
+        display: inline-block;
+        background: green;
+    }
+    .heads{
+        background: grey;
+    }
+    #right{
+        width:70%;
+        text-align: center;
+        display:inline-block;
+        padding:1%;
+        background: red;
+    }
+</style>
+
+<header>
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">All Products</a></li>
+        <li><a href="">Contacts</a></li>
+        <li><a href="">About Us</a></li>
+    </ul>
+    <form action="/search" method="post">
+        <input type="search" placeholder="Search" name="search">
+        <button type="submit">Search</button>
+    </form>
+</header>
+
+<section id="left">
+    <ul>
+        <p class="heads">Gender</p>
+        <li><a href="#">Mens</a></li>
+        <li><a href="#">Womems</a></li>
+        <li><a href="#">Unisex</a></li>
+        <li><a href="#">Kids</a></li>
+    </ul>
+    <ul>
+        <p class="heads">Season</a></p>
+        <li><a href="#">Winter</a></li>
+        <li><a href="#">Spring-Autumn</a></li>
+        <li><a href="#">Summer</a></li>
+    </ul>
+    <ul>
+        <p class="heads">Type</p>
+        <li><a href="#">Shoulder</a></li>
+        <li><a href="#">Belt</a></li>
+        <li><a href="#">Footwear</a></li>
+        <li><a href="#">Accessories</a></li>
+    </ul>
+    <ul>
+        <p class="heads">Kind</a></p>
+        <li><a href="#">Classic</a></li>
+        <li><a href="#">Sport</a></li>
+        <li><a href="#">Daily</a></li>
+    </ul>
+</section>
+
+<section id="right">
+    <table th:border="1px">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>description</th>
+            <th>amount</th>
+            <th>status</th>
+            <th>season</th>
+            <th>type</th>
+            <th>kind</th>
+        </tr>
+        <tr th:each="user : ${products}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.description}"></td>
+            <td th:text="${user.amount}"></td>
+            <td th:text="${user.status}"></td>
+            <td th:text="${user.season}"></td>
+            <td th:text="${user.type}"></td>
+            <td th:text="${user.kind}"></td>
+
+        </tr>
+    </table>
+</section>
+
+<footer>
+
+</footer>
+</body>
+</html>

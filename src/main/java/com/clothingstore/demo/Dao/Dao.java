@@ -27,8 +27,7 @@ public class Dao {
                 "\tLEFT OUTER JOIN type_of_product as t ON\n" +
                 "   \t\tt.id=p.type        \n" +
                 "\tLEFT OUTER JOIN kind_of_product as k ON\n" +
-                "   \t\tk.id=p.kind\n" +
-                "        ";
+                "k.id=p.kind\n";
         return jdbcTemplate.query(sql, new RowMapper<Product>() {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -43,6 +42,27 @@ public class Dao {
                     product.setKind(rs.getString("kind"));
                 return product;
             }
+        });
+    }
+
+    public List<Product> search(String s){
+        String sql="select * from products where name like \"%"+s+"%\" or description like \"%"+s+"%\";";
+
+        return jdbcTemplate.query(sql , new RowMapper<Product>(){
+           @Override
+           public Product mapRow(ResultSet rs , int rowNum) throws SQLException{
+               Product product = new Product();
+               product.setId(rs.getInt("id"));
+               product.setName(rs.getString("name"));
+               product.setDescription(rs.getString("description"));
+               product.setAmount(rs.getInt("amount"));
+               product.setStatus(rs.getString("status"));
+               product.setSeason(rs.getString("season"));
+               product.setType(rs.getString("type"));
+               product.setKind(rs.getString("kind"));
+
+               return product;
+           }
         });
     }
 
