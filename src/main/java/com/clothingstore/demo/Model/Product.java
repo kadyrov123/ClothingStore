@@ -9,13 +9,14 @@ public class Product {
     private String season;
     private String type;
     private String kind;
+    private String foto;
     private String f1;
     private String f2;
     private String f3;
     private String f4;
     private String f5;
 
-    public Product(int id, String name, int amount, String status, String season, String type, String kind) {
+    public Product(int id, String name, int amount, String status, String season, String type, String kind , String foto) {
         this.id = id;
         this.name = name;
         this.amount = amount;
@@ -23,6 +24,16 @@ public class Product {
         this.season = season;
         this.type = type;
         this.kind = kind;
+        String f="images/"+foto;
+        this.foto = f;
+    }
+
+    public String getF1() {
+        return f1;
+    }
+
+    public void setF1(String f1) {
+        this.f1 = "images/"+f1;
     }
 
     public Product(){}
@@ -105,20 +116,17 @@ public class Product {
         this.kind = kind;
     }
 
-    public String getF1() {
-        return f1;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setF1(String f1) {
-        this.f1 = f1;
-    }
 
     public String getF2() {
         return f2;
     }
 
     public void setF2(String f2) {
-        this.f2 = f2;
+        this.f2 = "images/"+f2;
     }
 
     public String getF3() {
@@ -126,7 +134,7 @@ public class Product {
     }
 
     public void setF3(String f3) {
-        this.f3 = f3;
+        this.f3 = "images/"+f3;
     }
 
     public String getF4() {
@@ -134,7 +142,7 @@ public class Product {
     }
 
     public void setF4(String f4) {
-        this.f4 = f4;
+        this.f4 ="images/"+ f4;
     }
 
     public String getF5() {
@@ -142,6 +150,11 @@ public class Product {
     }
 
     public void setF5(String f5) {
-        this.f5 = f5;
+        this.f5 ="images/"+f5;
+    }
+
+    public void setFoto(String foto) {
+        String f = "images/"+foto;
+        this.foto=f;
     }
 }

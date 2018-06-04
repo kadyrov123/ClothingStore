@@ -29,4 +29,10 @@ public class AllProductsController {
         return "all_products";
     }
 
+    @RequestMapping("/getProduct")
+    public String getProduct(@RequestParam("id")int id , ModelMap m){
+        m.addAttribute("u", dao.getProduct(id));
+        return "product.html";
+    }
+
 }

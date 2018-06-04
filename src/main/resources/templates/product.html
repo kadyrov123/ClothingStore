@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All Products</title>
+    <title>Product</title>
 </head>
 <body>
 <style type="text/css">
@@ -57,7 +57,7 @@
         <li><a href="#">Kids</a></li>
     </ul>
     <ul>
-        <p class="heads">Season</a></p>
+        <p class="heads">Season</p>
         <li><a href="#">Winter</a></li>
         <li><a href="#">Spring-Autumn</a></li>
         <li><a href="#">Summer</a></li>
@@ -70,7 +70,7 @@
         <li><a href="#">Accessories</a></li>
     </ul>
     <ul>
-        <p class="heads">Kind</a></p>
+        <p class="heads">Kind</p>
         <li><a href="#">Classic</a></li>
         <li><a href="#">Sport</a></li>
         <li><a href="#">Daily</a></li>
@@ -78,16 +78,18 @@
 </section>
 
 <section id="right">
-    <table th:border="1px" >
-        <div th:each="u:${products}" style="display:inline-block; width: 12%; padding: 5%; border: solid 1px;">
-            <div class="cell">
-                <a th:name="id" th:href="@{/getProduct(id=${u.id})}">
-                    <img th:src="${u.foto}" style="width:100px;">
-                    <p th:text="${u.name}"></p>
-                </a>
-            </div>
-        </div>
-    </table>
+    <div>
+        <img th:src="${u.foto}">
+        <p th:text="${u.name}"></p>
+
+
+        <img th:src="${u.f1}">
+        <img th:src="${u.f2}">
+        <img th:src="${u.f3}">
+        <img th:src="${u.f4}">
+        <img th:src="${u.f5}">
+    </div>
+
 </section>
 
 <footer>
