@@ -1,9 +1,12 @@
 package com.clothingstore.demo.Dao;
 
 import com.clothingstore.demo.Model.Product;
+import com.clothingstore.demo.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
@@ -17,7 +20,7 @@ public class Dao {
     private JdbcTemplate jdbcTemplate;
 
     public List<Product> getAllProducts(){
-        String sql="SELECT p.id , p.name , p.description , p.amount,p.foto ,st.status_name as status , se.status_name as season\n" +
+        String sql="SELECT p.id , p.name , p.description ,p.price , p.amount,p.foto ,st.status_name as status , se.status_name as season\n" +
                 "           \t, t.status_name as type ,k.status_name as kind\n" +
                 "\tFROM products as p \n" +
                 "\tLEFT OUTER JOIN status_of_product as st ON\n" +
@@ -40,6 +43,7 @@ public class Dao {
                     product.setSeason(rs.getString("season"));
                     product.setType(rs.getString("type"));
                     product.setKind(rs.getString("kind"));
+                    product.setPrice(rs.getDouble("price"));
                     product.setFoto(rs.getString("foto"));
                 return product;
             }
@@ -123,6 +127,30 @@ public class Dao {
         });
     }
 
+    public void registr(User user){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String password = encoder.encode(user.getPassword());
+        String sql ="insert into users(firstname,lastname,username,password,role) values(?,?,?,?,?)";
+        jdbcTemplate.update(sql,user.getFirstname(),user.getLastname(),user.getUsername(),password,"user");
+    }
+
+    public void login(User user){
+        
+    }
+
+    public User getUserByUsername(String username){
+        String sql = "select * from users where username=?";
+        RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
+        User user = jdbcTemplate.queryForObject(sql,rowMapper,username);
+        return user;
+    }
+
+    public User getUserById(int id){
+        String sql = "select * from users where id=?";
+        RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
+        User user = jdbcTemplate.queryForObject(sql,rowMapper,id);
+        return user;
+    }
 
 
 

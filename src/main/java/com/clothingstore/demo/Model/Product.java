@@ -1,5 +1,6 @@
 package com.clothingstore.demo.Model;
 
+
 public class Product {
     private int id;
     private String name;
@@ -9,6 +10,16 @@ public class Product {
     private String season;
     private String type;
     private String kind;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     private String foto;
     private String f1;
     private String f2;
@@ -24,17 +35,10 @@ public class Product {
         this.season = season;
         this.type = type;
         this.kind = kind;
-        String f="images/"+foto;
+        String f="photos/"+foto;
         this.foto = f;
     }
 
-    public String getF1() {
-        return f1;
-    }
-
-    public void setF1(String f1) {
-        this.f1 = "images/"+f1;
-    }
 
     public Product(){}
 
@@ -120,13 +124,20 @@ public class Product {
         return foto;
     }
 
+    public String getF1() {
+        return f1;
+    }
+
+    public void setF1(String f1) {
+        this.f1 = "photos/"+f1;
+    }
 
     public String getF2() {
         return f2;
     }
 
     public void setF2(String f2) {
-        this.f2 = "images/"+f2;
+        this.f2 = "photos/"+f2;
     }
 
     public String getF3() {
@@ -134,7 +145,7 @@ public class Product {
     }
 
     public void setF3(String f3) {
-        this.f3 = "images/"+f3;
+        this.f3 = "photos/"+f3;
     }
 
     public String getF4() {
@@ -142,7 +153,7 @@ public class Product {
     }
 
     public void setF4(String f4) {
-        this.f4 ="images/"+ f4;
+        this.f4 ="photos/"+ f4;
     }
 
     public String getF5() {
@@ -150,11 +161,11 @@ public class Product {
     }
 
     public void setF5(String f5) {
-        this.f5 ="images/"+f5;
+        this.f5 ="photos/"+f5;
     }
 
     public void setFoto(String foto) {
-        String f = "images/"+foto;
+        String f = "photos/"+foto;
         this.foto=f;
     }
 }
